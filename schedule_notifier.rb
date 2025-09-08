@@ -22,6 +22,7 @@ browser.at_css("button[type='submit']").focus.click
 browser.network.wait_for_idle
 sleep(2)
 browser.at_css(".fc-agendaWeek-button").focus.click
+browser.at_css(".fc-next-button.fc-button.fc-state-default.fc-corner-right").focus.click if Time.now.sunday?
 # w h y does the page still load AFTER the network's gone idle?????????
 browser.network.wait_for_idle
 sleep(2)
