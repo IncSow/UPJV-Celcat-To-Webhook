@@ -1,4 +1,6 @@
 require_relative 'scrapper'
+require 'discord_notifier'
+
 
 def send_planning_to_user(user, file_name="schedule")
 
@@ -14,10 +16,10 @@ def send_planning_to_user(user, file_name="schedule")
 end
 
 
-def notify_all_students
+def notify_all_students(is_dry_run)
   for student in $STUDENTS
     next if student[:webhook_url].nil? || student[:webhook_url].empty?
     get_planning(student)
-    send_planning_to_user(student) unless is_dry
+    send_planning_to_user(student) unless is_dry_run
   end
 end
